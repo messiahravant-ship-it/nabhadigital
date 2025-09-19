@@ -201,7 +201,7 @@ This project was developed for the Government of Punjab hackathon focusing on Sm
 
 ## 📞 Contact
 
-For questions, suggestions, or collaboration opportunities regarding this rural education initiative, please reach out through the hackathon platform or project maintainers.
+For questions, suggestions, or collaboration opportunities regarding this rural education initiative, please reach out to me at email:messiahravant@gmail.com.
 
 ## 🏆 Hackathon Achievement
 
@@ -223,6 +223,5 @@ This project is developed for educational purposes as part of the Government of 
 
 ### Quick Links
 - 🌐 **[Live Demo](https://your-project-demo-link.com)**
-- 📊 **[Presentation](./presentation.pptx)**  
-- 📱 **[Mobile App](./releases/mobile-app.apk)**
+- 📊 **[Presentation](./SIH2025-nabhaeducation.pptx)**  
 - 🛠️ **[Source Code](./)**
