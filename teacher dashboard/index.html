@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - Digital Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <h1 id="app-title">Teacher Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="language-selector">
+                    <select id="language-select" class="form-control">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="pa">ਪੰਜਾਬੀ</option>
+                    </select>
+                </div>
+                <div class="user-profile">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%2333808d'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-family='Arial' font-size='14' font-weight='bold'%3EGK%3C/text%3E%3C/svg%3E" alt="Profile" class="profile-img">
+                    <span class="teacher-name">Gurpreet Kaur</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="#" class="nav-link" data-section="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span data-translate="dashboard">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="classes">
+                        <i class="fas fa-chalkboard"></i>
+                        <span data-translate="classes">Classes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="students">
+                        <i class="fas fa-users"></i>
+                        <span data-translate="students">Students</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="assignments">
+                        <i class="fas fa-tasks"></i>
+                        <span data-translate="assignments">Assignments</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="gradebook">
+                        <i class="fas fa-book"></i>
+                        <span data-translate="gradebook">Gradebook</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="resources">
+                        <i class="fas fa-folder"></i>
+                        <span data-translate="resources">Resources</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="announcements">
+                        <i class="fas fa-bullhorn"></i>
+                        <span data-translate="announcements">Announcements</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="analytics">
+                        <i class="fas fa-chart-bar"></i>
+                        <span data-translate="analytics">Analytics</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="content-section active">
+                <div class="welcome-header">
+                    <h2 id="welcome-message">Welcome back, Gurpreet Kaur!</h2>
+                    <p>Here's what's happening in your classes today</p>
+                </div>
+
+                <!-- Stats Overview -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>87</h3>
+                            <p data-translate="total_students">Total Students</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p data-translate="pending_assignments">Pending Assignments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>25</h3>
+                            <p data-translate="grades_pending">Grades to Review</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>78%</h3>
+                            <p data-translate="avg_performance">Avg Performance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="btn btn--primary" onclick="createAssignment()">
+                            <i class="fas fa-plus"></i> Create Assignment
+                        </button>
+                        <button class="btn btn--secondary" onclick="recordAttendance()">
+                            <i class="fas fa-check-circle"></i> Record Attendance
+                        </button>
+                        <button class="btn btn--secondary" onclick="sendAnnouncement()">
+                            <i class="fas fa-bullhorn"></i> Send Announcement
+                        </button>
+                        <button class="btn btn--secondary" onclick="gradeAssignments()">
+                            <i class="fas fa-star"></i> Grade Assignments
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activities -->
+                <div class="recent-activities">
+                    <h3>Recent Activities</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-file-text"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Arjun Singh</strong> submitted "Quadratic Equations Practice"</p>
+                                <span class="time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Simran Kaur</strong> asked a question in Mathematics</p>
+                                <span class="time">4 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p>Parent-Teacher meeting scheduled for tomorrow</p>
+                                <span class="time">1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Class Performance Chart -->
+                <div class="chart-section">
+                    <h3>Class Performance Overview</h3>
+                    <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Classes Section -->
+            <section id="classes-section" class="content-section">
+                <div class="section-header">
+                    <h2>Class Management</h2>
+                    <button class="btn btn--primary" onclick="createClass()">
+                        <i class="fas fa-plus"></i> Add New Class
+                    </button>
+                </div>
+
+                <div class="classes-grid">
+                    <div class="class-card">
+                        <div class="class-header">
+                            <h3>10th A - Mathematics</h3>
+                            <span class="status status--success">Active</span>
+                        </div>
+                        <div class="class-info">
+                            <p><i class="fas fa-users"></i> 32 students</p>
+                            <p><i class="fas fa-clock"></i> Mon, Wed, Fri - 9:00 AM</p>
+                            <p><i class="fas fa-chart-line"></i> 78% avg performance</p>
+                        </div>
+                        <div class="class-actions">
+                            <button class="btn btn--sm btn--secondary" onclick="viewClass(1)">View Details</button>
+                            <button class="btn btn--sm btn--outline" onclick="takeAttendance(1)">Attendance</button>
+                        </div>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-header">
+                            <h3>10th B - Mathematics</h3>
+                            <span class="status status--success">Active</span>
+                        </div>
+                        <div class="class-info">
+                            <p><i class="fas fa-users"></i> 30 students</p>
+                            <p><i class="fas fa-clock"></i> Tue, Thu, Sat - 10:00 AM</p>
+                            <p><i class="fas fa-chart-line"></i> 82% avg performance</p>
+                        </div>
+                        <div class="class-actions">
+                            <button class="btn btn--sm btn--secondary" onclick="viewClass(2)">View Details</button>
+                            <button class="btn btn--sm btn--outline" onclick="takeAttendance(2)">Attendance</button>
+                        </div>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-header">
+                            <h3>9th A - Science</h3>
+                            <span class="status status--success">Active</span>
+                        </div>
+                        <div class="class-info">
+                            <p><i class="fas fa-users"></i> 25 students</p>
+                            <p><i class="fas fa-clock"></i> Mon, Wed, Fri - 11:00 AM</p>
+                            <p><i class="fas fa-chart-line"></i> 75% avg performance</p>
+                        </div>
+                        <div class="class-actions">
+                            <button class="btn btn--sm btn--secondary" onclick="viewClass(3)">View Details</button>
+                            <button class="btn btn--sm btn--outline" onclick="takeAttendance(3)">Attendance</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Students Section -->
+            <section id="students-section" class="content-section">
+                <div class="section-header">
+                    <h2>Student Management</h2>
+                    <div class="search-filter">
+                        <input type="text" id="student-search" placeholder="Search students..." class="form-control">
+                        <select id="class-filter" class="form-control">
+                            <option value="">All Classes</option>
+                            <option value="10th A">10th A</option>
+                            <option value="10th B">10th B</option>
+                            <option value="9th A">9th A</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="students-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Class</th>
+                                <th>Roll No.</th>
+                                <th>Attendance</th>
+                                <th>Avg Grade</th>
+                                <th>Contact</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="students-tbody">
+                            <tr>
+                                <td>
+                                    <div class="student-info">
+                                        <div class="student-avatar">AS</div>
+                                        <span>Arjun Singh</span>
+                                    </div>
+                                </td>
+                                <td>10th A</td>
+                                <td>2024001</td>
+                                <td><span class="status status--success">92%</span></td>
+                                <td>78</td>
+                                <td>+91 9876543210</td>
+                                <td>
+                                    <button class="btn btn--sm btn--secondary" onclick="viewStudent(1)">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="student-info">
+                                        <div class="student-avatar">SK</div>
+                                        <span>Simran Kaur</span>
+                                    </div>
+                                </td>
+                                <td>10th A</td>
+                                <td>2024002</td>
+                                <td><span class="status status--success">96%</span></td>
+                                <td>92</td>
+                                <td>+91 9876543211</td>
+                                <td>
+                                    <button class="btn btn--sm btn--secondary" onclick="viewStudent(2)">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="student-info">
+                                        <div class="student-avatar">PS</div>
+                                        <span>Preet Singh</span>
+                                    </div>
+                                </td>
+                                <td>10th B</td>
+                                <td>2024003</td>
+                                <td><span class="status status--warning">88%</span></td>
+                                <td>81</td>
+                                <td>+91 9876543212</td>
+                                <td>
+                                    <button class="btn btn--sm btn--secondary" onclick="viewStudent(3)">View</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Assignments Section -->
+            <section id="assignments-section" class="content-section">
+                <div class="section-header">
+                    <h2>Assignment Management</h2>
+                    <button class="btn btn--primary" onclick="showCreateAssignmentModal()">
+                        <i class="fas fa-plus"></i> Create Assignment
+                    </button>
+                </div>
+
+                <div class="assignments-grid">
+                    <div class="assignment-card">
+                        <div class="assignment-header">
+                            <h3>Quadratic Equations Practice</h3>
+                            <span class="status status--success">Active</span>
+                        </div>
+                        <div class="assignment-info">
+                            <p><i class="fas fa-chalkboard"></i> 10th A - Mathematics</p>
+                            <p><i class="fas fa-calendar"></i> Due: Sep 25, 2025</p>
+                            <p><i class="fas fa-users"></i> 28/32 submitted</p>
+                            <p><i class="fas fa-star"></i> Avg Score: 76%</p>
+                        </div>
+                        <div class="assignment-actions">
+                            <button class="btn btn--sm btn--secondary" onclick="gradeAssignment(1)">Grade</button>
+                            <button class="btn btn--sm btn--outline" onclick="viewSubmissions(1)">Submissions</button>
+                        </div>
+                    </div>
+
+                    <div class="assignment-card">
+                        <div class="assignment-header">
+                            <h3>Laws of Motion - Practical</h3>
+                            <span class="status status--warning">Pending Review</span>
+                        </div>
+                        <div class="assignment-info">
+                            <p><i class="fas fa-chalkboard"></i> 9th A - Science</p>
+                            <p><i class="fas fa-calendar"></i> Due: Sep 22, 2025</p>
+                            <p><i class="fas fa-users"></i> 25/25 submitted</p>
+                            <p><i class="fas fa-star"></i> Avg Score: 82%</p>
+                        </div>
+                        <div class="assignment-actions">
+                            <button class="btn btn--sm btn--secondary" onclick="gradeAssignment(2)">Grade</button>
+                            <button class="btn btn--sm btn--outline" onclick="viewSubmissions(2)">Submissions</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gradebook Section -->
+            <section id="gradebook-section" class="content-section">
+                <div class="section-header">
+                    <h2>Gradebook</h2>
+                    <div class="grade-filters">
+                        <select id="grade-class-filter" class="form-control">
+                            <option value="10th A">10th A</option>
+                            <option value="10th B">10th B</option>
+                            <option value="9th A">9th A</option>
+                        </select>
+                        <select id="grade-subject-filter" class="form-control">
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Science">Science</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="gradebook-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Quiz 1</th>
+                                <th>Assignment 1</th>
+                                <th>Quiz 2</th>
+                                <th>Assignment 2</th>
+                                <th>Average</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Arjun Singh</td>
+                                <td><input type="number" value="85" min="0" max="100" class="grade-input"></td>
+                                <td><input type="number" value="78" min="0" max="100" class="grade-input"></td>
+                                <td><input type="number" value="82" min="0" max="100" class="grade-input"></td>
+                                <td><input type="number" value="75" min="0" max="100" class="grade-input"></td>
+                                <td>80</td>
+                                <td><span class="grade-letter">B</span></td>
+                            </tr>
+                            <tr>
+                                <td>Simran Kaur</td>
+                                <td><input type="number" value="95" min="0" max="100" class="grade-input"></td>
+                                <td><input type="number" value="89" min="0" max="100" class="grade-input"></td>
+                                <td><input type="number" value="94" min="0" max="100" class="grade-input"></td>
+                                <td><input type="number" value="88" min="0" max="100" class="grade-input"></td>
+                                <td>92</td>
+                                <td><span class="grade-letter">A</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn--primary" onclick="saveGrades()">Save Grades</button>
+                </div>
+            </section>
+
+            <!-- Resources Section -->
+            <section id="resources-section" class="content-section">
+                <div class="section-header">
+                    <h2>Resource Management</h2>
+                    <button class="btn btn--primary" onclick="uploadResource()">
+                        <i class="fas fa-upload"></i> Upload Resource
+                    </button>
+                </div>
+
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h3>Algebra Fundamentals Video Series</h3>
+                            <p>Mathematics • Video • 250 MB</p>
+                            <p><i class="fas fa-download"></i> 45 downloads</p>
+                            <span class="status status--success">Available Offline</span>
+                        </div>
+                        <div class="resource-actions">
+                            <button class="btn btn--sm btn--secondary" onclick="shareResource(1)">Share</button>
+                            <button class="btn btn--sm btn--outline" onclick="downloadResource(1)">Download</button>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h3>Physics Lab Manual</h3>
+                            <p>Science • PDF • 15 MB</p>
+                            <p><i class="fas fa-download"></i> 67 downloads</p>
+                            <span class="status status--success">Available Offline</span>
+                        </div>
+                        <div class="resource-actions">
+                            <button class="btn btn--sm btn--secondary" onclick="shareResource(2)">Share</button>
+                            <button class="btn btn--sm btn--outline" onclick="downloadResource(2)">Download</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Announcements Section -->
+            <section id="announcements-section" class="content-section">
+                <div class="section-header">
+                    <h2>Announcements</h2>
+                    <button class="btn btn--primary" onclick="showCreateAnnouncementModal()">
+                        <i class="fas fa-plus"></i> Create Announcement
+                    </button>
+                </div>
+
+                <div class="announcements-list">
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <h3>Parent-Teacher Meeting</h3>
+                            <span class="status status--error">High Priority</span>
+                        </div>
+                        <div class="announcement-content">
+                            <p>Parent-teacher meetings scheduled for next week. Please check individual schedules.</p>
+                            <div class="announcement-meta">
+                                <span><i class="fas fa-calendar"></i> Sep 18, 2025</span>
+                                <span><i class="fas fa-users"></i> All Classes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <h3>Science Fair Preparation</h3>
+                            <span class="status status--warning">Medium Priority</span>
+                        </div>
+                        <div class="announcement-content">
+                            <p>Students working on science fair projects should submit their proposal by Friday.</p>
+                            <div class="announcement-meta">
+                                <span><i class="fas fa-calendar"></i> Sep 17, 2025</span>
+                                <span><i class="fas fa-users"></i> 9th A</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics-section" class="content-section">
+                <div class="section-header">
+                    <h2>Analytics Dashboard</h2>
+                    <div class="date-range">
+                        <input type="date" id="start-date" class="form-control" value="2025-09-01">
+                        <input type="date" id="end-date" class="form-control" value="2025-09-18">
+                    </div>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Student Performance Trends</h3>
+                        <div class="chart-container" style="position: relative; height: 250px;">
+                            <canvas id="performanceTrendChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Assignment Completion Rates</h3>
+                        <div class="chart-container" style="position: relative; height: 250px;">
+                            <canvas id="completionChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Class Attendance</h3>
+                        <div class="chart-container" style="position: relative; height: 250px;">
+                            <canvas id="attendanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Subject Performance</h3>
+                        <div class="chart-container" style="position: relative; height: 250px;">
+                            <canvas id="subjectChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Create Assignment Modal -->
+    <div id="create-assignment-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Assignment</h2>
+                <button class="modal-close" onclick="hideCreateAssignmentModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="assignment-form">
+                    <div class="form-group">
+                        <label class="form-label">Assignment Title</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject</label>
+                        <select class="form-control" required>
+                            <option value="">Select Subject</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Science">Science</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Class</label>
+                        <select class="form-control" required>
+                            <option value="">Select Class</option>
+                            <option value="10th A">10th A</option>
+                            <option value="10th B">10th B</option>
+                            <option value="9th A">9th A</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Due Date</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Instructions</label>
+                        <textarea class="form-control" rows="4" placeholder="Enter assignment instructions..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Attach Files</label>
+                        <input type="file" class="form-control" multiple>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary" onclick="hideCreateAssignmentModal()">Cancel</button>
+                <button class="btn btn--primary" onclick="createNewAssignment()">Create Assignment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Announcement Modal -->
+    <div id="create-announcement-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Announcement</h2>
+                <button class="modal-close" onclick="hideCreateAnnouncementModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="announcement-form">
+                    <div class="form-group">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Content</label>
+                        <textarea class="form-control" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Priority</label>
+                        <select class="form-control" required>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Target Classes</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="10th A"> 10th A</label>
+                            <label><input type="checkbox" value="10th B"> 10th B</label>
+                            <label><input type="checkbox" value="9th A"> 9th A</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary" onclick="hideCreateAnnouncementModal()">Cancel</button>
+                <button class="btn btn--primary" onclick="createNewAnnouncement()">Send Announcement</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

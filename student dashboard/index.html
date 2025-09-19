@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Learning Dashboard - Enhanced</title>
+
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- AOS (Animate On Scroll) Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #google_translate_element{
+            position: absolute;
+            top: 27.5px;
+            right: 300px;
+            z-index: 1050;
+
+        }
+
+    </style>
+
+
+      
+</head>
+<body>
+    <!-- Enhanced Header with Bootstrap navbar -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div id="google_translate_element"></div>
+
+<script>function googleTranslateElementInit(){
+    new google.translate.TranslateElement({
+        pageLanguage: 'en',
+    }, 'google_translate_element');
+}
+    </script>
+
+    <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-gradient sticky-top shadow-lg">
+        <div class="container-fluid">
+            <div class="navbar-brand d-flex align-items-center" data-aos="fade-right">
+                <i class="fas fa-graduation-cap me-2 fs-3 text-warning"></i>
+                <h1 class="mb-0 fs-4 fw-bold text-white">Smart Learning</h1>
+            </div>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <div class="navbar-nav ms-auto d-flex align-items-center">
+                    <!-- Language Selector -->
+                   
+
+                    <!-- Voice Controls -->
+                    <div class="nav-item me-3" data-aos="fade-down" data-aos-delay="200">
+                        <button id="voice-btn" class="btn btn-outline-light btn-sm voice-button custom-voice-btn" tabindex="0">
+                            <i id="voice-icon" class="fas fa-microphone me-1"></i>
+                            <span id="voice-status">Voice</span>
+                        </button>
+                    </div>
+
+                    <!-- User Profile -->
+                    <div class="nav-item dropdown" data-aos="fade-left" data-aos-delay="300">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" 
+                                 alt="Profile" class="rounded-circle me-2 profile-img" width="40" height="40">
+                            <div class="user-info d-none d-md-block">
+                                <div class="user-name fw-semibold">Arjun Singh</div>
+                                <div class="user-grade small opacity-75">10th Grade</div>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow">
+                            <li><a class="dropdown-item" href="#" tabindex="0"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#" tabindex="0"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" tabindex="0"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voice Indicator -->
+        <div id="voice-indicator" class="voice-indicator position-absolute top-100 start-50 translate-middle-x d-none">
+            <div class="bg-white text-primary p-2 rounded shadow-sm">
+                <i class="fas fa-microphone-alt me-1"></i>
+                <span>Listening...</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-container d-flex">
+        <!-- Enhanced Sidebar with Bootstrap -->
+        <nav class="sidebar bg-light-custom border-end shadow-sm d-flex flex-column">
+            <div class="flex-grow-1">
+                <ul class="nav nav-pills flex-column p-3" id="main-nav">
+                    <li class="nav-item mb-2" data-aos="fade-right" data-aos-delay="100">
+                        <a class="nav-link active rounded-pill custom-nav-link" data-section="dashboard" href="#" tabindex="0" role="button">
+                            <i class="fas fa-tachometer-alt me-3"></i>
+                            <span data-translate="dashboard">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2" data-aos="fade-right" data-aos-delay="200">
+                        <a class="nav-link rounded-pill custom-nav-link" data-section="courses" href="#" tabindex="0" role="button">
+                            <i class="fas fa-book me-3"></i>
+                            <span data-translate="courses">My Courses</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2" data-aos="fade-right" data-aos-delay="300">
+                        <a class="nav-link rounded-pill custom-nav-link" data-section="quiz" href="#" tabindex="0" role="button">
+                            <i class="fas fa-question-circle me-3"></i>
+                            <span data-translate="quiz">Take Quiz</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2" data-aos="fade-right" data-aos-delay="400">
+                        <a class="nav-link rounded-pill custom-nav-link" data-section="profile" href="#" tabindex="0" role="button">
+                            <i class="fas fa-user-circle me-3"></i>
+                            <span data-translate="profile">Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2" data-aos="fade-right" data-aos-delay="500">
+                        <a class="nav-link rounded-pill custom-nav-link" data-section="leaderboard" href="#" tabindex="0" role="button">
+                            <i class="fas fa-trophy me-3"></i>
+                            <span>Leaderboard</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Floating Action Button for Help -->
+            <div class="p-3 border-top">
+                <button class="btn btn-primary-custom w-100 rounded-pill shadow-sm" onclick="openChatbot()" data-aos="zoom-in" tabindex="0">
+                    <i class="fas fa-robot me-2"></i>
+                    AI Assistant
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content flex-grow-1 p-4">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="section active">
+                <!-- Welcome Header -->
+                <div class="welcome-header text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-5 fw-bold text-primary-custom mb-3">
+                        <span data-translate="welcome">Welcome back, Arjun!</span>
+                        <i class="fas fa-star text-warning ms-2"></i>
+                    </h2>
+                    <p class="lead text-muted">Ready to continue your learning journey?</p>
+                </div>
+
+                <!-- Enhanced Stats Grid -->
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-3 col-md-6" data-aos="flip-left" data-aos-delay="100">
+                        <div class="stat-card card border-0 shadow-hover h-100">
+                            <div class="card-body text-center position-relative overflow-hidden">
+                                <div class="stat-icon-bg position-absolute"></div>
+                                <i class="fas fa-coins fs-1 text-warning mb-3 stat-icon"></i>
+                                <h3 class="display-6 fw-bold text-primary-custom mb-1">2850</h3>
+                                <p class="text-muted mb-0" data-translate="points">Points</p>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-warning-custom" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6" data-aos="flip-left" data-aos-delay="200">
+                        <div class="stat-card card border-0 shadow-hover h-100">
+                            <div class="card-body text-center position-relative overflow-hidden">
+                                <div class="stat-icon-bg position-absolute"></div>
+                                <i class="fas fa-level-up-alt fs-1 text-success-custom mb-3 stat-icon"></i>
+                                <h3 class="display-6 fw-bold text-primary-custom mb-1">12</h3>
+                                <p class="text-muted mb-0" data-translate="level">Level</p>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-success-custom" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6" data-aos="flip-left" data-aos-delay="300">
+                        <div class="stat-card card border-0 shadow-hover h-100">
+                            <div class="card-body text-center position-relative overflow-hidden">
+                                <div class="stat-icon-bg position-absolute"></div>
+                                <i class="fas fa-fire fs-1 text-danger-custom mb-3 stat-icon"></i>
+                                <h3 class="display-6 fw-bold text-primary-custom mb-1">15</h3>
+                                <p class="text-muted mb-0">Day Streak</p>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-danger-custom" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6" data-aos="flip-left" data-aos-delay="400">
+                        <div class="stat-card card border-0 shadow-hover h-100">
+                            <div class="card-body text-center position-relative overflow-hidden">
+                                <div class="stat-icon-bg position-absolute"></div>
+                                <i class="fas fa-check-circle fs-1 text-info-custom mb-3 stat-icon"></i>
+                                <h3 class="display-6 fw-bold text-primary-custom mb-1">8</h3>
+                                <p class="text-muted mb-0">Courses Completed</p>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-info-custom" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="row mb-5">
+                    <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="fas fa-chart-line text-primary-custom me-3 fs-4"></i>
+                                    <h3 class="card-title mb-0">Level Progress</h3>
+                                </div>
+                                <p class="text-muted mb-3">850 / 1000 XP to next level</p>
+                                <div class="progress mb-3" style="height: 12px;">
+                                    <div class="progress-bar bg-primary-custom progress-bar-striped progress-bar-animated" 
+                                         style="width: 85%" role="progressbar">
+                                        <span class="visually-hidden">85% Complete</span>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <small class="text-muted">Current XP</small>
+                                        <div class="fw-bold text-primary-custom">850</div>
+                                    </div>
+                                    <div class="col-4">
+                                        <small class="text-muted">Next Level</small>
+                                        <div class="fw-bold text-primary-custom">1000</div>
+                                    </div>
+                                    <div class="col-4">
+                                        <small class="text-muted">Remaining</small>
+                                        <div class="fw-bold text-primary-custom">150</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Badges -->
+                <div class="row">
+                    <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-4">
+                                    <i class="fas fa-medal text-warning me-3 fs-4"></i>
+                                    <h3 class="card-title mb-0">Recent Badges</h3>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                                        <div class="badge-item text-center p-3 rounded-3 bg-warning-gradient text-white h-100 shadow-sm">
+                                            <i class="fas fa-bolt fs-2 mb-2"></i>
+                                            <div class="fw-semibold">Quick Learner</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                                        <div class="badge-item text-center p-3 rounded-3 bg-info-gradient text-white h-100 shadow-sm">
+                                            <i class="fas fa-calculator fs-2 mb-2"></i>
+                                            <div class="fw-semibold">Math Wizard</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                                        <div class="badge-item text-center p-3 rounded-3 bg-success-gradient text-white h-100 shadow-sm">
+                                            <i class="fas fa-microscope fs-2 mb-2"></i>
+                                            <div class="fw-semibold">Science Explorer</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                                        <div class="badge-item text-center p-3 rounded-3 bg-primary-gradient text-white h-100 shadow-sm">
+                                            <i class="fas fa-microphone fs-2 mb-2"></i>
+                                            <div class="fw-semibold">Voice Commander</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Courses Section -->
+            <section id="courses-section" class="section d-none">
+                <div class="section-header text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-5 fw-bold text-primary-custom mb-3">
+                        <i class="fas fa-book-open me-3"></i>
+                        My Courses
+                    </h2>
+                    <p class="lead text-muted">Continue your learning journey</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="100">
+                        <div class="course-card card border-0 shadow-hover h-100 overflow-hidden">
+                            <div class="course-header bg-primary-gradient text-white p-4 position-relative">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <i class="fas fa-calculator fs-1 opacity-75"></i>
+                                    <span class="badge bg-success-custom">
+                                        <i class="fas fa-download me-1"></i>Offline Available
+                                    </span>
+                                </div>
+                                <div class="course-overlay"></div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title mb-3">Mathematics - Class 10</h3>
+                                <p class="text-muted mb-3">75% Complete • 15/20 lessons</p>
+                                <div class="progress mb-3" style="height: 8px;">
+                                    <div class="progress-bar bg-primary-custom progress-bar-striped" 
+                                         style="width: 75%" role="progressbar"></div>
+                                </div>
+                                <button class="btn btn-primary-custom w-100" onclick="openCourse(1)" tabindex="0">
+                                    <i class="fas fa-play me-2"></i>Continue Learning
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="200">
+                        <div class="course-card card border-0 shadow-hover h-100 overflow-hidden">
+                            <div class="course-header bg-success-gradient text-white p-4 position-relative">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <i class="fas fa-atom fs-1 opacity-75"></i>
+                                    <span class="badge bg-success-custom">
+                                        <i class="fas fa-download me-1"></i>Offline Available
+                                    </span>
+                                </div>
+                                <div class="course-overlay"></div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title mb-3">Science - Physics</h3>
+                                <p class="text-muted mb-3">60% Complete • 15/25 lessons</p>
+                                <div class="progress mb-3" style="height: 8px;">
+                                    <div class="progress-bar bg-success-custom progress-bar-striped" 
+                                         style="width: 60%" role="progressbar"></div>
+                                </div>
+                                <button class="btn btn-success-custom w-100" onclick="openCourse(2)" tabindex="0">
+                                    <i class="fas fa-play me-2"></i>Continue Learning
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="300">
+                        <div class="course-card card border-0 shadow-hover h-100 overflow-hidden">
+                            <div class="course-header bg-warning-gradient text-white p-4 position-relative">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <i class="fas fa-book-open fs-1 opacity-75"></i>
+                                    <span class="badge bg-info-custom">
+                                        <i class="fas fa-wifi me-1"></i>Online Only
+                                    </span>
+                                </div>
+                                <div class="course-overlay"></div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title mb-3">English Grammar</h3>
+                                <p class="text-muted mb-3">90% Complete • 16/18 lessons</p>
+                                <div class="progress mb-3" style="height: 8px;">
+                                    <div class="progress-bar bg-warning-custom progress-bar-striped" 
+                                         style="width: 90%" role="progressbar"></div>
+                                </div>
+                                <button class="btn btn-warning-custom w-100" onclick="openCourse(3)" tabindex="0">
+                                    <i class="fas fa-play me-2"></i>Continue Learning
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="400">
+                        <div class="course-card card border-0 shadow-hover h-100 overflow-hidden">
+                            <div class="course-header bg-info-gradient text-white p-4 position-relative">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <i class="fas fa-landmark fs-1 opacity-75"></i>
+                                    <span class="badge bg-success-custom">
+                                        <i class="fas fa-download me-1"></i>Offline Available
+                                    </span>
+                                </div>
+                                <div class="course-overlay"></div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title mb-3">History - Indian Freedom</h3>
+                                <p class="text-muted mb-3">45% Complete • 10/22 lessons</p>
+                                <div class="progress mb-3" style="height: 8px;">
+                                    <div class="progress-bar bg-info-custom progress-bar-striped" 
+                                         style="width: 45%" role="progressbar"></div>
+                                </div>
+                                <button class="btn btn-info-custom w-100" onclick="openCourse(4)" tabindex="0">
+                                    <i class="fas fa-play me-2"></i>Continue Learning
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section id="quiz-section" class="section d-none">
+                <div class="section-header text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-5 fw-bold text-primary-custom mb-3">
+                        <i class="fas fa-brain me-3"></i>
+                        Interactive Quiz
+                    </h2>
+                    <p class="lead text-muted">Test your knowledge and earn points!</p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="quiz-container card border-0 shadow-lg" data-aos="zoom-in">
+                            <div class="card-header bg-primary-gradient text-white text-center">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-question-circle me-2"></i>
+                                    Quiz Challenge
+                                </h4>
+                            </div>
+
+                            <div class="card-body p-4">
+                                <!-- Quiz Progress -->
+                                <div class="quiz-progress mb-4">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="fw-semibold">Progress</span>
+                                        <span id="quiz-counter" class="text-muted">Question 1 of 4</span>
+                                    </div>
+                                    <div class="progress" style="height: 10px;">
+                                        <div id="quiz-progress" class="progress-bar bg-primary-custom progress-bar-striped progress-bar-animated" 
+                                             style="width: 25%" role="progressbar"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Question Card -->
+                                <div class="question-card text-center mb-4">
+                                    <h3 id="quiz-question" class="mb-4 text-primary-custom">What is the value of π (pi)?</h3>
+
+                                    <div class="quiz-options row g-3">
+                                        <div class="col-md-6">
+                                            <button class="quiz-option btn btn-outline-primary-custom w-100 h-100 py-3" data-answer="0" tabindex="0">
+                                                <i class="fas fa-circle me-2 small"></i>
+                                                3.14
+                                            </button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="quiz-option btn btn-outline-primary-custom w-100 h-100 py-3" data-answer="1" tabindex="0">
+                                                <i class="fas fa-circle me-2 small"></i>
+                                                2.14
+                                            </button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="quiz-option btn btn-outline-primary-custom w-100 h-100 py-3" data-answer="2" tabindex="0">
+                                                <i class="fas fa-circle me-2 small"></i>
+                                                4.14
+                                            </button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="quiz-option btn btn-outline-primary-custom w-100 h-100 py-3" data-answer="3" tabindex="0">
+                                                <i class="fas fa-circle me-2 small"></i>
+                                                1.14
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Quiz Controls -->
+                                <div class="quiz-controls d-flex justify-content-between align-items-center">
+                                    <button id="quiz-hint" class="btn btn-outline-info-custom" tabindex="0">
+                                        <i class="fas fa-lightbulb me-2"></i>
+                                        Hint
+                                    </button>
+                                    <button id="quiz-next" class="btn btn-primary-custom d-none" tabindex="0">
+                                        Next Question
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Quiz Result -->
+                                <div id="quiz-result" class="quiz-result text-center d-none">
+                                    <div class="result-content">
+                                        <i class="fas fa-trophy result-icon text-warning fs-1"></i>
+                                        <h3 class="mb-3">Quiz Complete!</h3>
+                                        <p class="lead">Your Score: <span id="final-score" class="fw-bold text-primary-custom">3/4</span></p>
+                                        <p>Points Earned: <span id="points-earned" class="fw-bold text-success-custom">+35</span></p>
+                                        <button class="btn btn-primary-custom" onclick="restartQuiz()" tabindex="0">
+                                            <i class="fas fa-redo me-2"></i>
+                                            Restart Quiz
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile-section" class="section d-none">
+                <div class="section-header text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-5 fw-bold text-primary-custom mb-3">
+                        <i class="fas fa-user-circle me-3"></i>
+                        My Profile
+                    </h2>
+                    <p class="lead text-muted">Track your learning progress</p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Profile Card -->
+                    <div class="col-lg-4" data-aos="fade-right">
+                        <div class="profile-card card border-0 shadow-hover h-100">
+                            <div class="card-body text-center">
+                                <div class="position-relative mb-4">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" 
+                                         alt="Profile" class="profile-avatar rounded-circle mb-3 border border-primary-custom border-3" width="120" height="120">
+                                    <div class="position-absolute bottom-0 end-0">
+                                        <span class="badge bg-success-custom rounded-pill">
+                                            <i class="fas fa-check"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <h3 class="text-primary-custom mb-2">Arjun Singh</h3>
+                                <p class="text-muted mb-4">10th Grade Student</p>
+
+                                <div class="profile-stats row g-3 text-center">
+                                    <div class="col-4">
+                                        <div class="stat">
+                                            <span class="stat-value d-block fs-5 fw-bold text-primary-custom">2850</span>
+                                            <span class="stat-label small text-muted">Total Points</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="stat">
+                                            <span class="stat-value d-block fs-5 fw-bold text-primary-custom">12</span>
+                                            <span class="stat-label small text-muted">Current Level</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="stat">
+                                            <span class="stat-value d-block fs-5 fw-bold text-primary-custom">15</span>
+                                            <span class="stat-label small text-muted">days streak</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="col-lg-8" data-aos="fade-left">
+                        <div class="achievements-grid card border-0 shadow-hover h-100">
+                            <div class="card-body">
+                                <h3 class="text-primary-custom mb-4">
+                                    <i class="fas fa-medal me-2"></i>
+                                    Achievements
+                                </h3>
+
+                                <div class="badges-collection row g-3">
+                                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="100">
+                                        <div class="achievement-badge earned bg-warning-gradient text-white rounded-3 p-3 text-center">
+                                            <i class="fas fa-bolt fs-2 mb-2"></i>
+                                            <div class="fw-semibold">Quick Learner</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
+                                        <div class="achievement-badge earned bg-primary-gradient text-white rounded-3 p-3 text-center">
+                                            <i class="fas fa-calculator fs-2 mb-2"></i>
+                                            <div class="fw-semibold">Math Wizard</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
+                                        <div class="achievement-badge earned bg-success-gradient text-white rounded-3 p-3 text-center">
+                                            <i class="fas fa-microscope fs-2 mb-2"></i>
+                                            <div class="fw-semibold">Science Explorer</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="400">
+                                        <div class="achievement-badge earned bg-info-gradient text-white rounded-3 p-3 text-center">
+                                            <i class="fas fa-microphone fs-2 mb-2"></i>
+                                            <div class="fw-semibold">Voice Commander</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="500">
+                                        <div class="achievement-badge earned bg-danger-gradient text-white rounded-3 p-3 text-center">
+                                            <i class="fas fa-crown fs-2 mb-2"></i>
+                                            <div class="fw-semibold">Top Student</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="600">
+                                        <div class="achievement-badge earned bg-dark-gradient text-white rounded-3 p-3 text-center">
+                                            <i class="fas fa-star fs-2 mb-2"></i>
+                                            <div class="fw-semibold">Perfect Score</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leaderboard Section -->
+            <section id="leaderboard-section" class="section d-none">
+                <div class="section-header text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-5 fw-bold text-primary-custom mb-3">
+                        <i class="fas fa-trophy me-3"></i>
+                        Leaderboard
+                    </h2>
+                    <p class="lead text-muted">See how you rank among your classmates</p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="leaderboard-container card border-0 shadow-lg" data-aos="fade-up">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex align-items-center py-3 rank-1" data-aos="slide-right" data-aos-delay="100">
+                                    <div class="rank me-4">
+                                        <i class="fas fa-crown text-warning fs-3"></i>
+                                    </div>
+                                    <div class="player-info flex-grow-1">
+                                        <div class="name fw-semibold fs-5">Simran Kaur</div>
+                                        <span class="badge bg-warning-custom text-dark">Scholar</span>
+                                    </div>
+                                    <div class="points fs-4 fw-bold text-primary-custom">3200</div>
+                                </div>
+
+                                <div class="list-group-item d-flex align-items-center py-3 current-user bg-light-custom border-start border-primary-custom border-3" 
+                                     data-aos="slide-right" data-aos-delay="200">
+                                    <div class="rank me-4">
+                                        <i class="fas fa-medal text-secondary fs-3"></i>
+                                    </div>
+                                    <div class="player-info flex-grow-1">
+                                        <div class="name fw-semibold fs-5">
+                                            Arjun Singh (You)
+                                            <i class="fas fa-user-check text-primary-custom ms-2"></i>
+                                        </div>
+                                        <span class="badge bg-primary-custom">Explorer</span>
+                                    </div>
+                                    <div class="points fs-4 fw-bold text-primary-custom">2850</div>
+                                </div>
+
+                                <div class="list-group-item d-flex align-items-center py-3 rank-3" data-aos="slide-right" data-aos-delay="300">
+                                    <div class="rank me-4">
+                                        <i class="fas fa-award text-warning fs-3"></i>
+                                    </div>
+                                    <div class="player-info flex-grow-1">
+                                        <div class="name fw-semibold fs-5">Preet Singh</div>
+                                        <span class="badge bg-success-custom">Achiever</span>
+                                    </div>
+                                    <div class="points fs-4 fw-bold text-primary-custom">2640</div>
+                                </div>
+
+                                <div class="list-group-item d-flex align-items-center py-3" data-aos="slide-right" data-aos-delay="400">
+                                    <div class="rank me-4">
+                                        <span class="fs-4 fw-bold text-muted">4</span>
+                                    </div>
+                                    <div class="player-info flex-grow-1">
+                                        <div class="name fw-semibold fs-5">Ravi Kumar</div>
+                                        <span class="badge bg-info-custom">Learner</span>
+                                    </div>
+                                    <div class="points fs-4 fw-bold text-primary-custom">2420</div>
+                                </div>
+
+                                <div class="list-group-item d-flex align-items-center py-3" data-aos="slide-right" data-aos-delay="500">
+                                    <div class="rank me-4">
+                                        <span class="fs-4 fw-bold text-muted">5</span>
+                                    </div>
+                                    <div class="player-info flex-grow-1">
+                                        <div class="name fw-semibold fs-5">Neha Sharma</div>
+                                        <span class="badge bg-secondary">Seeker</span>
+                                    </div>
+                                    <div class="points fs-4 fw-bold text-primary-custom">2180</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;"></div>
+
+    <!-- Enhanced Chatbot Modal -->
+    <div id="chatbot-modal" class="modal fade" tabindex="-1" aria-labelledby="chatbotModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-primary-gradient text-white border-0">
+                    <h3 class="modal-title d-flex align-items-center" id="chatbotModalLabel">
+                        <i class="fas fa-robot me-2"></i>
+                        <span data-translate="chat_with_ai">Chat with AI Assistant</span>
+                    </h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="chatbot-messages" id="chatbot-messages" style="height: 400px; overflow-y: auto;">
+                        <div class="p-4">
+                            <div class="message bot-message mb-3">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-robot text-primary-custom me-3 mt-1"></i>
+                                    <div class="message-content bg-light p-3 rounded-3">
+                                        Hello! I'm here to help you learn. What would you like to know?
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-top p-3">
+                        <div class="quick-questions mb-3">
+                            <button class="btn btn-outline-primary-custom btn-sm me-2 mb-2" onclick="askQuickQuestion('math')" tabindex="0">
+                                <i class="fas fa-calculator me-1"></i>Math Help
+                            </button>
+                            <button class="btn btn-outline-primary-custom btn-sm me-2 mb-2" onclick="askQuickQuestion('science')" tabindex="0">
+                                <i class="fas fa-flask me-1"></i>Science Help
+                            </button>
+                            <button class="btn btn-outline-primary-custom btn-sm mb-2" onclick="askQuickQuestion('quiz')" tabindex="0">
+                                <i class="fas fa-question me-1"></i>Quiz Help
+                            </button>
+                        </div>
+                        <div class="chatbot-input d-flex">
+                            <input type="text" id="chatbot-input" class="form-control me-2" 
+                                   placeholder="Type your message..." data-translate="type_message" aria-label="Chat message">
+                            <button class="btn btn-primary-custom" onclick="sendMessage()" tabindex="0" aria-label="Send message">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Modal -->
+    <div id="course-modal" class="modal fade" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-primary-gradient text-white border-0">
+                    <h3 id="course-title" class="modal-title">Course Title</h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="course-video bg-dark text-center p-5">
+                        <i class="fas fa-play-circle fs-1 text-white mb-3"></i>
+                        <p class="text-white mb-0">Video content would load here</p>
+                    </div>
+                    <div class="lesson-content p-4">
+                        <h4>Current Lesson: Introduction to Algebra</h4>
+                        <p>This lesson covers the basics of algebraic expressions and equations...</p>
+                        <div class="lesson-progress d-flex align-items-center">
+                            <span class="me-3">Lesson Progress:</span>
+                            <div class="progress flex-grow-1 me-3">
+                                <div class="progress-bar bg-primary-custom" style="width: 75%"></div>
+                            </div>
+                            <span class="text-muted">75%</span>
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-success-custom me-2" onclick="markComplete()" tabindex="0">
+                                <i class="fas fa-check me-2"></i>Mark Complete
+                            </button>
+                            <button class="btn btn-outline-primary-custom" tabindex="0">
+                                <i class="fas fa-download me-2"></i>Download Resources
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Chatbot</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+#chatbot-toggler {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  height: 50px;
+  width: 50px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  background: #5350c4;
+  transition: all 0.2s ease;
+}
+
+body.show-chatbot #chatbot-toggler {
+  transform: rotate(90deg);
+}
+
+#chatbot-toggler span {
+  color: #fff;
+  position: absolute;
+}
+
+body.show-chatbot #chatbot-toggler span:first-child, #chatbot-toggler span:last-child{
+  opacity: 0;
+}
+
+body.show-chatbot #chatbot-toggler span:last-child{
+  opacity: 1;
+}
+
+.chatbot-popup {
+  position: fixed;
+  right: 25px;
+  bottom: 90px;
+  width: 420px;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 15px;
+  opacity: 0;
+  transform: scale(0.2);
+  transform-origin: bottom right;
+  pointer-events: none;
+  box-shadow: 0 0 128px rgba(0, 0, 0, 0.1), 0 32px 64px -48px rgba(0, 0, 0, 0.5);
+  transition: all 0.1s ease;
+}
+
+body.show-chatbot .chatbot-popup {
+  opacity: 1;
+  pointer-events: auto;
+    transform: scale(1);
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  background: #5350c4;
+  padding: 15px 22px;
+  justify-content: space-between;
+}
+
+.chat-header .header-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.header-info .chatbot-logo {
+  height: 35px;
+  width: 35px;
+  padding: 6px;
+  fill: #5350c4;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.header-info .logo-text {
+  color: #fff;
+  font-size: 1.31rem;
+  font-weight: 600;
+}
+
+.chat-header #close-chatbot {
+  border: none;
+  color: #fff;
+  height: 40px;
+  width: 40px;
+  font-size: 1.9rem;
+  margin-right: -10px;
+  padding-top: 2px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: none;
+  transition: 0.2s ease;
+}
+
+.chat-header #close-chatbot:hover {
+  background: #3d39ac;
+}
+
+.chat-body {
+  padding: 25px 22px;
+  display: flex;
+  gap: 20px;
+  height: 460px;
+  margin-bottom: 82px;
+  overflow-y: auto;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: #ccccf5 transparent;
+}
+
+.chat-body .message {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+}
+
+.chat-body .bot-message .bot-avatar {
+  height: 35px;
+  width: 35px;
+  padding: 6px;
+  fill: #fff;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+  align-self: flex-end;
+  background: #5350c4;
+  border-radius: 50%;
+}
+
+.chat-body .user-message {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.chat-body .message .message-text {
+  padding: 12px 16px;
+  max-width: 75%;
+  font-size: 0.95rem;
+  background: #f2f2ff;
+}
+
+.chat-body .bot-message.thinking .message-text {
+  padding: 2px 16px;
+}
+
+.chat-body .bot-message .message-text {
+  background-color: #f2f2ff;
+  border-radius: 13px 13px 13px 3px;
+}
+
+.chat-body .user-message .message-text {
+  color: #fff;
+  background-color: #5350c4;
+  border-radius: 13px 13px 3px 13px;
+}
+
+.chat-body .bot-message .thinking-indicator {
+  display: flex;
+  gap: 4px;
+  padding-block: 15px;
+}
+
+.chat-body .bot-message .thinking-indicator .dot:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.chat-body .bot-message .thinking-indicator .dot:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.chat-body .bot-message .thinking-indicator .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.chat-body .bot-message .thinking-indicator .dot {
+  height: 7px;
+  width: 7px;
+  opacity: 0.7;
+  border-radius: 50%;
+  background: #6f6bc2;
+  animation: dotPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%,
+  44% {
+    transform: translateY(0);
+  }
+
+  28% {
+    opacity: 0.4;
+    transform: translateY(-4px);
+  }
+
+  44% {
+    opacity: 0.2;
+  }
+}
+
+.chat-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  padding: 15px 22px 20px;
+}
+
+.chat-footer .chat-form {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 32px;
+  outline: 1px solid #cccce5;
+}
+
+.chat-footer .chat-form:focus-within {
+  outline: 2px solid #5350c4;
+}
+
+.chat-form .message-input {
+  border: none;
+  outline: none;
+  height: 47px;
+  width: 100%;
+  resize: none;
+  max-height: 180px;
+  white-space: pre-line;
+  font-size: 1rem;
+  padding: 13px;
+  border-radius: inherit;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.chat-form .message-input::hover {
+  scrollbar-color: #ccccf5 transparent;
+}
+
+.chat-form .chat-controls {
+  display: flex;
+  height: 47px;
+  gap: 3px;
+  align-items: center;
+  align-self: flex-end;
+  padding-right: 6px;
+}
+
+.chat-form .chat-controls button {
+  height: 35px;
+  width: 35px;
+  border: none;
+  font-size: 1.15rem;
+  cursor: pointer;
+  color: #706db0;
+  background: none;
+  border-radius: 50%;
+  transition: 0.2s ease;
+}
+
+.chat-form .chat-controls #send-message {
+  color: #fff;
+  display: none;
+  background: #5350c4;
+}
+
+.chat-form .message-input:valid ~ .chat-controls #send-message {
+  display: block;
+}
+
+.chat-form .chat-controls #send-message:hover {
+  background: #3d39ac;
+}
+
+.chat-form .chat-controls button:hover {
+  background: #f1f1f1;
+}
+
+.chat-body .user-message .attachment {
+  width: 50%;
+  margin-top: -7px;
+  border-radius: 13px 3px 13px 3px;
+}
+
+em-emoji-picker {
+  position: absolute;
+  left: 50%;
+  top: -337px;
+  width: 100%;
+  max-width: 350px;
+  max-height: 330px;
+  visibility: hidden;
+  transform: translateX(-50%);
+}
+
+ body.show-emoji-picker em-emoji-picker {
+  visibility: visible;
+ }
+/* Responsive for mobile screen */
+@media screen and (max-width: 600px) {
+  .chatbot-popup {
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+    height: 100%;
+  }
+
+  .chat-header .header-info .logo-text {
+    font-size: 1.1rem;
+  }
+
+  .chat-body {
+    height: 100%;
+    margin-bottom: 0;
+  }
+
+  .chat-body .message .message-text {
+    max-width: 85%;
+  }
+
+  .chat-footer .chat-form {
+    border-radius: 0;
+    border-radius: 25px;
+  }
+
+  .chat-footer .chat-form .message-input {
+    border-radius: 0;
+  }
+
+  .chat-footer .chat-form .chat-controls {
+    padding-right: 10px;
+  }
+
+  .chat-footer .chat-form .chat-controls button {
+    height: 40px;
+    width: 40px;
+  }
+} 
+  </style>
+  <body>
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-rounded">close</span>
+    </button>
+
+    <div class="chatbot-popup">
+      <!-- Chatbot Header -->
+      <div class="chat-header">
+        <div class="header-info">
+          <svg 
+            class="chatbot-logo"
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            viewBox="0 0 1024 1024"
+          >
+            <path
+              d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5zM867.2 644.5V453.1h26.5c19.4 0 35.1 15.7 35.1 35.1v121.1c0 19.4-15.7 35.1-35.1 35.1h-26.5zM95.2 609.4V488.2c0-19.4 15.7-35.1 35.1-35.1h26.5v191.3h-26.5c-19.4 0-35.1-15.7-35.1-35.1zM561.5 149.6c0 23.4-15.6 43.3-36.9 49.7v44.9h-30v-44.9c-21.4-6.5-36.9-26.3-36.9-49.7 0-28.6 23.3-51.9 51.9-51.9s51.9 23.3 51.9 51.9z"
+            ></path>
+          </svg>
+
+          <h2 class="logo-text">Chatbot</h2>
+        </div>
+        <button id="close-chatbot"
+        class="material-symbols-rounded">keyboard_arrow_down</button>
+      </div>
+
+      <!-- Chatbot Body -->
+      <div class="chat-body">
+        <div class="message bot-message">
+          <svg 
+            class="bot-avatar"
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            viewBox="0 0 1024 1024"
+          >
+          <path
+              d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5zM867.2 644.5V453.1h26.5c19.4 0 35.1 15.7 35.1 35.1v121.1c0 19.4-15.7 35.1-35.1 35.1h-26.5zM95.2 609.4V488.2c0-19.4 15.7-35.1 35.1-35.1h26.5v191.3h-26.5c-19.4 0-35.1-15.7-35.1-35.1zM561.5 149.6c0 23.4-15.6 43.3-36.9 49.7v44.9h-30v-44.9c-21.4-6.5-36.9-26.3-36.9-49.7 0-28.6 23.3-51.9 51.9-51.9s51.9 23.3 51.9 51.9z"
+            ></path>
+          </svg>
+          <div class="message-text">
+            Hey there 👋 <br />
+            How can i help you today?
+          </div>
+        </div>
+      </div>
+      
+
+      <!-- Chatbot Footer -->
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea placeholder="Message..." class="message-input" required></textarea>
+          <div class="chat-controls">
+            <button type="button" id="emoji-picker" class="material-symbols-rounded">sentiment_satisfied</button>
+            <div class="file-upload-wrapper">
+              <input type="file" accept="images/*" id="file-input" hidden>
+              <button type="button" id="file-upload" class="material-symbols-rounded">attach_file</button>
+            </div>
+            <button type="submit" id="send-message" class="material-symbols-rounded">arrow_upward</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- linking emoji mart script for emoji picker -->
+    <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+
+    
+
+
+  </body>
+</html>
