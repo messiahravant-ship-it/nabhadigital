@@ -137,9 +137,6 @@ Many government schools in Nabha and nearby rural areas lack updated computer in
 ### 📊 Presentation
 - [View Project Presentation](./SIH2025-nabhaeducation.pptx) - Comprehensive project overview and demo
 
-### 📱 Mobile App
-- **Android:** [Download APK](./releases/mobile-app.apk)
-- **iOS:** Available on TestFlight (Contact for access)
 
 ## 🚀 Getting Started
 
